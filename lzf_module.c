@@ -28,7 +28,8 @@ python_compress(PyObject *self, PyObject *args) {
         return NULL;
 
     if (pyoutlen == Py_None)
-        outlen = inlen - 1;
+//        outlen = inlen - 1;
+        outlen = ((inlen * 33) >> 5 ) + 1;
     else if (PyInt_CheckExact(pyoutlen))
         outlen = PyInt_AsLong(pyoutlen);
     else if (PyLong_CheckExact(pyoutlen))
